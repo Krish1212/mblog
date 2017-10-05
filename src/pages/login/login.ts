@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { HomePage } from '../home/home';
+
 @IonicPage({
   name:'login'
 })
@@ -9,7 +11,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  authenticated:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -17,7 +19,10 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   login() {
-    this.navCtrl.popToRoot();
+    //this.navCtrl.popToRoot();
+    this.navCtrl.push(HomePage, {
+      'authenticated' : 'true'
+    });
   }
   register() {
     this.navCtrl.push('register')

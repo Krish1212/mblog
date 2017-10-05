@@ -15,10 +15,28 @@
           The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
         </ion-card-content>
         <ion-row>
-          <ion-col>
+          <ion-col *ngIf="!(authenticated)">
             <button ion-button icon-left clear small (click)="login()">
               <ion-icon name="log-in"></ion-icon>
-              Login
+              Login for more fun...
+            </button>
+          </ion-col>
+          <ion-col *ngIf="authenticated">
+            <button ion-button icon-left clear small (click)="upvote()">
+              <ion-icon name="heart"></ion-icon>
+              Like
+            </button>
+          </ion-col>
+          <ion-col *ngIf="authenticated">
+            <button ion-button icon-left clear small (click)="expand()">
+              <ion-icon name="expand"></ion-icon>
+              Expand
+            </button>
+          </ion-col>
+          <ion-col *ngIf="authenticated">
+            <button ion-button icon-left clear small (click)="comment()">
+              <ion-icon name=""></ion-icon>
+              Comment
             </button>
           </ion-col>
         </ion-row>
