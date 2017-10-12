@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
   selector: 'page-home',
@@ -7,15 +8,20 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 })
 export class HomePage {
   authenticated:any;
+  profileData:any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl:AlertController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public afAuth: AuthProvider) {
+    this.profileData = this.navParams.get('profile');
   }
-  ionViewWillEnter(){
-    this.authenticated = (this.navParams.get('authenticated') === 'true') ? true : false;
+  ionViewDidLoad(){
+    this.authenticated = this.afAuth.currentUser;
   }
   login() {
     this.navCtrl.push('login');
+  }
+  logout() {
+    this.afAuth.logoutUser();
+    this.navCtrl.setRoot('login');
   }
 
 }

@@ -8,21 +8,27 @@
 
 
 <ion-content padding>
-    <ion-list>
-          <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input type="email"></ion-input>
-          </ion-item>
-        
-          <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
-          </ion-item>
-        </ion-list>
-        <button ion-button block color="primary" round icon-left (click)="login()">
+    <form [formGroup]="loginForm" novalidate>
+        <ion-item>
+          <ion-label floating>Username (Email)</ion-label>
+          <ion-input #username formControlName="username" type="email" [class.invalid]="!loginForm.controls.username.valid && loginForm.controls.username.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">
+          <p>Please enter a valid Email</p>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input #password formControlName="password" type="password" [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.dirty">
+          <p>Password must be more than 6 characters</p>
+        </ion-item>
+        <button ion-button block color="primary" type="submit" round icon-left (click)="login()">
           <ion-icon name="log-in"></ion-icon>
           Login
         </button>
+      </form>
         <button ion-button block color="light" round icon-left (click)="register()">
             <ion-icon name="create"></ion-icon>
             Register
