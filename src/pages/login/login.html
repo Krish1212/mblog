@@ -10,7 +10,7 @@
 <ion-content padding>
     <form [formGroup]="loginForm" novalidate>
         <ion-item>
-          <ion-label floating>Username (Email)</ion-label>
+          <ion-label floating>Email</ion-label>
           <ion-input #username formControlName="username" type="email" [class.invalid]="!loginForm.controls.username.valid && loginForm.controls.username.dirty"></ion-input>
         </ion-item>
         <ion-item class="error-message" *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">
