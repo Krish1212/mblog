@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reset Password</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="resetForm" novalidate>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input #username formControlName="username" type="email" [class.invalid]="!resetForm.controls.username.valid && resetForm.controls.username.dirty"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!resetForm.controls.username.valid && resetForm.controls.username.dirty">
+      <p>Please enter a valid Email</p>
+    </ion-item>
+    <button ion-button block color="light" type="submit" round icon-left (click)="resetPassword()">
+      <ion-icon name="ios-refresh"></ion-icon>
+      Reset Password
+    </button>
+  </form>
+</ion-content>

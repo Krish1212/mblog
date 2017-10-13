@@ -10,7 +10,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 
 @IonicPage({
-  name:'login'
+  name: 'login'
 })
 @Component({
   selector: 'page-login',
@@ -25,6 +25,7 @@ export class LoginPage {
   loading: Loading;
   profileData:any;
   registered:boolean;
+  alertMessage:String;
   
   
   constructor(public navCtrl: NavController, 
@@ -41,11 +42,12 @@ export class LoginPage {
     this.username = this.loginForm.controls['username'];
     this.password = this.loginForm.controls['password'];
     this.registered = this.navParams.get('registered') ? this.navParams.get('registered') : false;
+    this.alertMessage = this.navParams.get('message') ? this.navParams.get('message') : null;
   }
   ionViewDidLoad(){
     if(this.registered){
       let pageload = this.alertCtrl.create({
-        message:`Register successfully...Please Login to have fun`,
+        message: this.alertMessage.toString(),
         buttons:[{
           text:'Ok',
           role:'cancel'
@@ -93,9 +95,23 @@ export class LoginPage {
       this.loading.present();
     }
   }
-
-  register() {
-    this.navCtrl.push('register')
+  fbLogin(){
+    this.loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Loading...please wait',
+      dismissOnPageChange:true,
+    });
+    this.afAuth.loginUsingFb().then(auth => {
+      console.log(auth);
+    }, authError => {
+      console.log(authError);
+      this.error = authError;
+    })
   }
-
+  register() {
+    this.navCtrl.push('register');
+  }
+  resetPassword() {
+    this.navCtrl.push('reset');
+  }
 }

@@ -29,8 +29,18 @@
           Login
         </button>
       </form>
-        <button ion-button block color="light" round icon-left (click)="register()">
-            <ion-icon name="create"></ion-icon>
-            Register
-        </button>
+      <button ion-button block color="primary" clear icon-left (click)="resetPassword()">
+        <ion-icon name="ios-refresh"></ion-icon>
+        Reset Password
+      </button>
+      <button ion-button block color="light" round icon-left (click)="register()">
+        <ion-icon name="create"></ion-icon>
+        Register
+      </button>
+      <br>
+      <hr>
+      <button ion-button block color="primary" round icon-left (click)="fbLogin()">
+        <ion-icon name="logo-facebook"></ion-icon>
+        Login With Facebook
+      </button>
 </ion-content>

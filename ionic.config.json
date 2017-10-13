@@ -2,5 +2,7 @@
   "name": "mblog",
   "app_id": "4f6b440a",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

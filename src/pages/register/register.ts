@@ -44,7 +44,7 @@ export class RegisterPage {
       this.user = ({'username':this.username.value, 'password':this.password.value});
       this.afAuth.signupUser(this.user).subscribe(authData => {
         //console.log(authData);
-        this.navCtrl.push('login',{registered:true});
+        this.navCtrl.push('login',{registered:true, message:"Register successfully...Please Login to have fun"});
       }, authError => {
         this.loading.dismiss().then(() => {
           //console.log(authError);

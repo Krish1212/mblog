@@ -3,6 +3,8 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Facebook } from '@ionic-native/facebook';
+import firebase from 'firebase/app';
 
 import { User } from '../../models/user';
 import { Profile } from '../../models/profile';
@@ -12,7 +14,7 @@ export class AuthProvider {
 
   user = {} as User;
   profile = {} as Profile;
-  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase) {
+  constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, private facebook:Facebook) {
     //console.log('Hello AuthProvider Provider');
   }
 
@@ -50,6 +52,27 @@ export class AuthProvider {
           observer.next(auth);
         }).catch(error => {
           observer.error(error);
+        });
+      });
+    });
+  }
+  resetPassword(emailAddress: string){
+    return Observable.create(observer => {
+      this.afAuth.auth.sendPasswordResetEmail(emailAddress).then((success) => {
+        observer.next(success);
+      }, error => {
+        observer.next(error);
+      });
+    });
+  }
+  loginUsingFb(){
+    return Observable.create(observer => {
+      this.facebook.login(["email"]).then((loginResponse) => {
+        const credentials = firebase.auth.FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
+        this.afAuth.auth.signInWithCredential(credentials).then((result) => {
+          observer.next(result);
+        }, error => {
+          observer.next(error);
         });
       });
     });
