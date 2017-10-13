@@ -103,9 +103,11 @@ export class LoginPage {
     });
     this.afAuth.loginUsingFb().then(auth => {
       console.log(auth);
+      alert(JSON.stringify(auth));
     }, authError => {
       console.log(authError);
       this.error = authError;
+      alert(JSON.stringify(authError));
     })
   }
   register() {
