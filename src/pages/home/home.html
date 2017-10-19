@@ -14,40 +14,43 @@
 
 <ion-content padding>
   <h2>Welcome {{(profileData)?.username}}</h2>
-    <ion-card>
-        <ion-card-header class="card-header">
-          Sample header
-        </ion-card-header>
-        <ion-card-content>
-          The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-        </ion-card-content>
-        <ion-row *ngIf="(authenticated === null)">
-          <ion-col>
-            <button ion-button icon-left clear small (click)="login()">
-              <ion-icon name="log-in"></ion-icon>
-              Login for more fun...
-            </button>
-          </ion-col>
-        </ion-row>
-        <ion-row *ngIf="(authenticated !== null)">
-          <ion-col>
-            <button ion-button icon-left clear small (click)="upvote()">
-              <ion-icon name="thumbs-up"></ion-icon>
-              Like
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small (click)="expand()">
-              <ion-icon name="expand"></ion-icon>
-              Expand
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button icon-left clear small (click)="comment()">
-              <ion-icon name="chatbubble"></ion-icon>
-              Comment
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-card>
+  <ion-fab bottom right edge>
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <ion-card>
+      <ion-card-header class="card-header">
+        Sample header
+      </ion-card-header>
+      <ion-card-content>
+        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+      </ion-card-content>
+      <ion-row *ngIf="(authenticated === null)">
+        <ion-col>
+          <button ion-button icon-left clear small (click)="login()">
+            <ion-icon name="log-in"></ion-icon>
+            Login for more fun...
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="(authenticated !== null)">
+        <ion-col>
+          <button ion-button icon-left clear small (click)="upvote()">
+            <ion-icon name="thumbs-up"></ion-icon>
+            Like
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="expand()">
+            <ion-icon name="expand"></ion-icon>
+            Expand
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small (click)="comment()">
+            <ion-icon name="chatbubble"></ion-icon>
+            Comment
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>      
 </ion-content>

@@ -9,15 +9,15 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { Facebook } from '@ionic-native/facebook';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AuthProvider } from '../providers/auth/auth';
 import { BlogsProvider } from '../providers/blogs/blogs';
+import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +29,7 @@ import { BlogsProvider } from '../providers/blogs/blogs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
   ],
   providers: [
     StatusBar,

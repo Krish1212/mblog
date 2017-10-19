@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>create</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="createBlogForm" novalidate>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input #title formControlName="title" type="text" [class.invalid]="!createBlogForm.controls.title.valid && registerForm.controls.title.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!createBlogForm.controls.title.valid && createBlogForm.controls.title.dirty">
+        <p>Title is required</p>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Summary/Link</ion-label>
+        <ion-input #summary formControlName="summary" type="text" [class.invalid]="!createBlogForm.controls.summary.valid && createBlogForm.controls.summary.dirty"></ion-input>
+      </ion-item>
+      <ion-item class="error-message" *ngIf="!createBlogForm.controls.summary.valid && createBlogForm.controls.summary.dirty">
+        <p>Summary or Website link is required</p>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Description</ion-label>
+          <ion-input #description formControlName="description" type="text" [class.invalid]="!createBlogForm.controls.description.valid && createBlogForm.controls.description.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!createBlogForm.controls.description.valid && createBlogForm.controls.description.dirty">
+          <p>Summary or Website link is required</p>
+        </ion-item>
+        <button ion-button block color="primary" type="submit" round icon-left (click)="creatBlog()">
+        <ion-icon name="md-create"></ion-icon>
+        Register
+      </button>
+    </form>
+</ion-content>

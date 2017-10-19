@@ -87,4 +87,5 @@
         <variable name="APP_ID" value="182631538973846" />
         <variable name="APP_NAME" value="mblog - mobile blogger" />
     </plugin>
+    <engine name="android" spec="~6.3.0" />
 </widget>
