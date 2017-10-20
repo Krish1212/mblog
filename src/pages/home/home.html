@@ -12,45 +12,50 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="cards-bg social-cards">
   <h2>Welcome {{(profileData)?.username}}</h2>
   <ion-fab bottom right edge>
-    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+    <button ion-fab mini (click)="openBlog()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-  <ion-card>
-      <ion-card-header class="card-header">
-        Sample header
-      </ion-card-header>
-      <ion-card-content>
-        The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-      </ion-card-content>
-      <ion-row *ngIf="(authenticated === null)">
-        <ion-col>
-          <button ion-button icon-left clear small (click)="login()">
-            <ion-icon name="log-in"></ion-icon>
-            Login for more fun...
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngIf="(authenticated !== null)">
-        <ion-col>
-          <button ion-button icon-left clear small (click)="upvote()">
-            <ion-icon name="thumbs-up"></ion-icon>
-            Like
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small (click)="expand()">
-            <ion-icon name="expand"></ion-icon>
-            Expand
-          </button>
-        </ion-col>
-        <ion-col>
-          <button ion-button icon-left clear small (click)="comment()">
-            <ion-icon name="chatbubble"></ion-icon>
-            Comment
-          </button>
-        </ion-col>
-      </ion-row>
-    </ion-card>      
+  <ion-card *ngFor="let blog of blogsList">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="../../../assets/icon/favicon.ico">
+      </ion-avatar>
+      <h2>{{ blog.title }}</h2>
+      <p>this time</p>
+    </ion-item>
+    <ion-card-content>
+      <p>{{blog.summary}}</p>
+      <p>{{blog.content | slice:0:100}}<span *ngIf="blog.content.length > 100">...</span></p>
+    </ion-card-content>
+    <ion-row *ngIf="(authenticated === null)">
+      <ion-col>
+        <button ion-button icon-left clear small (click)="login()">
+          <ion-icon name="log-in"></ion-icon>
+          Login for more fun...
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="(authenticated !== null)">
+      <ion-col>
+        <button ion-button icon-left clear small (click)="upvote()">
+          <ion-icon name="thumbs-up"></ion-icon>
+          Like
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="expand()">
+          <ion-icon name="expand"></ion-icon>
+          Expand
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small (click)="comment()">
+          <ion-icon name="chatbubble"></ion-icon>
+          Comment
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>      
 </ion-content>

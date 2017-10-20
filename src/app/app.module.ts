@@ -13,11 +13,13 @@ import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AuthProvider } from '../providers/auth/auth';
 import { BlogsProvider } from '../providers/blogs/blogs';
 import { HomePage } from '../pages/home/home';
+import { CreatePage } from '../pages/create/create';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    CreatePage,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { HomePage } from '../pages/home/home';
   entryComponents: [
     MyApp,
     HomePage,
+    CreatePage,
   ],
   providers: [
     StatusBar,
@@ -37,7 +40,7 @@ import { HomePage } from '../pages/home/home';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     Facebook,
-    BlogsProvider
+    BlogsProvider,
   ]
 })
 export class AppModule {}
