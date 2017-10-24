@@ -14,12 +14,14 @@ import { AuthProvider } from '../providers/auth/auth';
 import { BlogsProvider } from '../providers/blogs/blogs';
 import { HomePage } from '../pages/home/home';
 import { CreatePage } from '../pages/create/create';
+import { ReaderPage } from '../pages/reader/reader';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     CreatePage,
+    ReaderPage,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { CreatePage } from '../pages/create/create';
     MyApp,
     HomePage,
     CreatePage,
+    ReaderPage,
   ],
   providers: [
     StatusBar,

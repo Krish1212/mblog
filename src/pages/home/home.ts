@@ -4,11 +4,12 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { CreatePage } from '../create/create';
+import { ReaderPage } from '../reader/reader';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
-  entryComponents: [ CreatePage ]
+  entryComponents: [ CreatePage, ReaderPage ]
 })
 export class HomePage {
   authenticated:any;
@@ -27,7 +28,7 @@ export class HomePage {
   ionViewWillEnter(){
     this.loading = this.loadingCtrl.create({
       spinner: 'bubbles',
-      content: 'Loading Blogs...',
+      content: 'Loading Blogs from database...',
       dismissOnPageChange:true,
     });
     const dbref = this.afDatabase.database.ref();
@@ -52,5 +53,8 @@ export class HomePage {
   }
   openBlog() {
     this.navCtrl.push( CreatePage );
+  }
+  expand(thisBlog:object){
+    this.navCtrl.push(ReaderPage, { _thisBlog: thisBlog});
   }
 }

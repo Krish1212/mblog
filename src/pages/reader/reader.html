@@ -1,0 +1,15 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ expandBlog.title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h2>{{ expandBlog.title }}</h2>
+  <p class="link">{{ expandBlog.summary }}</p>
+  <img src="http://via.placeholder.com/350x150" alt="Blog image">
+  <p class="content" data-ng-style="text-align:justify;">{{ expandBlog.content }}</p>
+</ion-content>

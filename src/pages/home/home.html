@@ -14,7 +14,7 @@
 
 <ion-content padding class="cards-bg social-cards">
   <h2>Welcome {{(profileData)?.username}}</h2>
-  <ion-fab bottom right edge>
+  <ion-fab bottom right>
     <button ion-fab mini (click)="openBlog()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
   <ion-card *ngFor="let blog of blogsList">
@@ -45,7 +45,7 @@
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-left clear small (click)="expand()">
+        <button ion-button icon-left clear small (click)="expand(blog)">
           <ion-icon name="expand"></ion-icon>
           Expand
         </button>
